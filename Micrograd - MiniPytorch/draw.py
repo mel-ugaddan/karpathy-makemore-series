@@ -13,7 +13,7 @@ def trace(root):
   return nodes, edges
 
 def draw_dot(root):
-  dot = Digraph(format='svg', graph_attr={'rankdir': 'LR'}) # LR = left to right
+  dot = Digraph(format='png', graph_attr={'rankdir': 'LR'}) # LR = left to right
   
   nodes, edges = trace(root)
   for n in nodes:
