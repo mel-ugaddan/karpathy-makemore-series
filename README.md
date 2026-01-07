@@ -54,6 +54,7 @@ Other parts of this repository is :
 - CUDA Programming ( Vectorized Addition and Matrix Multiplication )
 
 ---
+## Output/s
 
 Example **Micrograd** operation :
 ```python
@@ -74,7 +75,7 @@ loss.backward()
 draw_dot(loss)
 ```
 
-Generated Graph : 
+Generated Graph with automatic calculated gradients : 
 
 ![Micrograd Example](https://github.com/mel-ugaddan/karpathy-makemore-series/blob/main/micrograd_example.png?raw=true)
 ---
