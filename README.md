@@ -1,4 +1,4 @@
-# Neural Networks From Scratch — micrograd & makemore
+# Neural Networks From Scratch — micrograd & makemore deep learning series
 
 This repository contains implementations, notes, and experiments based on **Andrej Karpathy’s “Neural Networks: Zero to Hero” series**, focusing on:
 
@@ -55,7 +55,7 @@ Other parts of this repository is :
 
 ---
 
-Example Micrograd operation :
+Example **Micrograd** operation :
 ```python
 x1 = Value(1, label='x1')
 w1 = Value(-4.0, label='w1')
@@ -74,6 +74,9 @@ loss.backward()
 draw_dot(loss)
 ```
 
+Generated Graph : 
+
+![Micrograd Example](https://github.com/mel-ugaddan/karpathy-makemore-series/blob/main/micrograd_example.png?raw=true)
 ---
 
 Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog.
