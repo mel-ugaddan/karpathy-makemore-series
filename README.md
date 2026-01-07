@@ -48,3 +48,10 @@ This foundation is especially useful for work involving:
 - BERT-style architectures
 - Noisy-label learning
 - Representation and embedding analysis
+
+Other parts of this repository is :
+- Attention Mechanism of GPT2 ( Attention Mechanism of LLMs)
+- CUDA Programming ( Vectorized Addition and Matrix Multiplication )
+
+Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog.
+
