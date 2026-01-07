@@ -53,5 +53,28 @@ Other parts of this repository is :
 - Attention Mechanism of GPT2 ( Attention Mechanism of LLMs)
 - CUDA Programming ( Vectorized Addition and Matrix Multiplication )
 
+---
+
+Example Micrograd operation :
+```python
+x1 = Value(1, label='x1')
+w1 = Value(-4.0, label='w1')
+
+x2 = Value(3.75, label='x2')
+w2 = Value(2.0, label='w2')
+
+x1w1 = x1 * w1
+x1w1.label = 'x1w1'
+
+x2w2 = x2 * w2
+x2w2.label = 'x2w2'
+
+loss = (x1w1 - x2w2) ** 2
+loss.backward()
+draw_dot(loss)
+```
+
+---
+
 Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog.
 
