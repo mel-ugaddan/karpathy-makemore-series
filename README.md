@@ -1,11 +1,11 @@
-# Neural Networks From Scratch — micrograd & makemore deep learning series
+# Neural Networks From Scratch — micrograd & makemore ( Intro to Deep Learning series )
 
 This repository contains implementations, notes, and experiments based on **Andrej Karpathy’s “Neural Networks: Zero to Hero” series**, focusing on:
 
 - **micrograd** — a tiny automatic differentiation engine
 - **makemore** — character-level language models built step by step
 
-The goal is to deeply understand how neural networks work internally, from backpropagation to language modeling.
+The goal is to deeply understand how pytorch works internally, from backpropagation to language modeling.
 
 ---
 
@@ -28,13 +28,15 @@ A minimal autograd engine that builds and differentiates scalar-valued computati
 ### makemore
 A character-level language modeling project that incrementally builds modern NLP concepts from scratch.
 
-**Models included**
+**Topics included**
 1. Bigram count-based models
 2. Neural bigram models
 3. Multi-layer perceptrons (MLPs)
 4. Batch normalization
 5. PyTorch training loops
 6. Sampling and evaluation
+7. Attention Mechanism ( GPT vs BERT )
+8. Tokenization (BPE Algorithm)
 
 **Key concepts**
 - Character tokenization
@@ -46,7 +48,6 @@ A character-level language modeling project that incrementally builds modern NLP
 This foundation is especially useful for work involving:
 - Language models (LLMs)
 - BERT-style architectures
-- Noisy-label learning
 - Representation and embedding analysis
 
 Other parts of this repository is :
@@ -54,7 +55,7 @@ Other parts of this repository is :
 - CUDA Programming ( Vectorized Addition and Matrix Multiplication )
 
 ---
-## Output/s
+## Outputs : 
 
 Example **Micrograd** operation :
 ```python
@@ -75,10 +76,10 @@ loss.backward()
 draw_dot(loss)
 ```
 
-Generated Graph with automatic calculated gradients : 
+Generated graph structure with calculated gradients : 
 
 ![Micrograd Example](https://github.com/mel-ugaddan/karpathy-makemore-series/blob/main/micrograd_example.png?raw=true)
 ---
 
-Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog.
+Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog e.g. as my development as an engineer.
 
