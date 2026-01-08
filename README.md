@@ -51,7 +51,6 @@ This foundation is especially useful for work involving:
 - Representation and embedding analysis
 
 Other parts of this repository is :
-- Attention Mechanism of GPT2 ( Attention Mechanism of LLMs)
 - CUDA Programming ( Vectorized Addition and Matrix Multiplication )
 
 ---
@@ -81,5 +80,5 @@ Generated graph structure with calculated gradients :
 ![Micrograd Example](https://github.com/mel-ugaddan/karpathy-makemore-series/blob/main/micrograd_example.png?raw=true)
 ---
 
-Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog e.g. as my development as an engineer.
+Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog.
 
