@@ -54,9 +54,12 @@ Other parts of this repository is :
 - CUDA Programming ( Vectorized Addition and Matrix Multiplication )
 
 ---
+
 ## Outputs : 
 
-#### Example **Micrograd** operation :
+### Example output from **Micrograd** :
+
+#### Operation :
 ```python
 x1 = Value(1, label='x1')
 w1 = Value(-4.0, label='w1')
@@ -78,6 +81,17 @@ draw_dot(loss)
 #### Generated graph structure with calculated gradients : 
 
 ![Micrograd Example](https://github.com/mel-ugaddan/karpathy-makemore-series/blob/main/micrograd_example.png?raw=true)
+
+### Batchnorm Computation :
+
+$$
+\begin{aligned}
+\mu_B &= \frac{1}{m} \sum_{i=1}^{m} x_i \\
+\sigma_B^2 &= \frac{1}{m} \sum_{i=1}^{m} (x_i - \mu_B)^2 \\
+\hat{x}_i &= \frac{x_i - \mu_B}{\sqrt{\sigma_B^2 + \varepsilon}} \\
+y_i &= \gamma \hat{x}_i + \beta
+\end{aligned}
+$$
 
 ---
 
