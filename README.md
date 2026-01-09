@@ -56,7 +56,7 @@ Other parts of this repository is :
 ---
 ## Outputs : 
 
-Example **Micrograd** operation :
+#### Example **Micrograd** operation :
 ```python
 x1 = Value(1, label='x1')
 w1 = Value(-4.0, label='w1')
@@ -75,9 +75,10 @@ loss.backward()
 draw_dot(loss)
 ```
 
-Generated graph structure with calculated gradients : 
+#### Generated graph structure with calculated gradients : 
 
 ![Micrograd Example](https://github.com/mel-ugaddan/karpathy-makemore-series/blob/main/micrograd_example.png?raw=true)
+
 ---
 
 Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog.
