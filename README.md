@@ -126,6 +126,24 @@ $$
 \end{aligned}
 $$
 
+$$
+\begin{aligned}
+\frac{d\sigma^2}{d\mu}&=\frac{d}{d\mu}\left[\frac{1}{m-1}\sum_{i=1}^{m}(x_i-\mu)^2\right]\\
+&=-\frac{2}{m-1}\left[\sum_{i=1}^{m}(x_i-\mu)\right]\\
+&=-\frac{2}{m-1}\left[(\sum_{i=1}^{m}x_i-\sum_{i=1}^{m}\mu)\right]\\
+&=-\frac{2}{m-1}\left[(mx_i-m\mu)\right]\\
+&=0
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\frac{dL}{d\sigma^2}&=\left(\sum_{i=1}^{m}\frac{dL}{d\hat{x}_i}\cdot\frac{d\hat{x}_i}{d\mu}\right)+\left(\frac{dL}{d\sigma^2}\cdot\frac{d\sigma^2}{d\mu}\right)\\
+\end{aligned}
+$$
+
+
+
 ---
 
 Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog.
