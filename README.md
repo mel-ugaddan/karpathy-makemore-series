@@ -84,14 +84,42 @@ draw_dot(loss)
 
 ### Batchnorm Computation :
 
+#### Formula :
 $$
 \begin{aligned}
 \mu_B &= \frac{1}{m} \sum_{i=1}^{m} x_i \\
-\sigma_B^2 &= \frac{1}{m} \sum_{i=1}^{m} (x_i - \mu_B)^2 \\
+\sigma^2 &= \frac{1}{m} \sum_{i=1}^{m} (x_i - \mu_B)^2 \\
 \hat{x}_i &= \frac{x_i - \mu_B}{\sqrt{\sigma_B^2 + \varepsilon}} \\
 y_i &= \gamma \hat{x}_i + \beta
 \end{aligned}
 $$
+
+#### Code :
+```
+bnmeani = 1/n*hprebn.sum(0, keepdim=True)
+bndiff = hprebn - bnmeani
+bndiff2 = bndiff**2
+bnvar = 1/(n-1)*(bndiff2).sum(0, keepdim=True) # Bessel's correction
+bnvar_inv = (bnvar + 1e-5)**-0.5
+bnraw = bndiff * bnvar_inv
+hpreact = bngain * bnraw + bnbias
+```
+
+#### Compute :
+
+$$
+\frac{dL}{dx_i} = ?
+$$
+
+#### The chain rule of computing $$\frac{dL}{dx_i}$$ for batchnorm is :
+
+$$
+\begin{aligned}
+\frac{dL}{d\hat{x}_i}&=\frac{dL}{dy_i}
+\end{aligned}
+$$
+
+
 
 ---
 
