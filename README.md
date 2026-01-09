@@ -87,39 +87,44 @@ draw_dot(loss)
 #### Formula :
 $$
 \begin{aligned}
-\mu_B &= \frac{1}{m} \sum_{i=1}^{m} x_i \\
-\sigma^2 &= \frac{1}{m} \sum_{i=1}^{m} (x_i - \mu_B)^2 \\
-\hat{x}_i &= \frac{x_i - \mu_B}{\sqrt{\sigma_B^2 + \varepsilon}} \\
+\mu &= \frac{1}{m} \sum_{i=1}^{m} x_i \\
+\sigma^2 &= \frac{1}{m} \sum_{i=1}^{m} (x_i - \mu)^2 \\
+\hat{x}_i &= \frac{x_i - \mu}{\sqrt{\sigma^2 + \varepsilon}} \\
 y_i &= \gamma \hat{x}_i + \beta
 \end{aligned}
 $$
 
-#### Code :
-```
-bnmeani = 1/n*hprebn.sum(0, keepdim=True)
-bndiff = hprebn - bnmeani
-bndiff2 = bndiff**2
-bnvar = 1/(n-1)*(bndiff2).sum(0, keepdim=True) # Bessel's correction
-bnvar_inv = (bnvar + 1e-5)**-0.5
-bnraw = bndiff * bnvar_inv
-hpreact = bngain * bnraw + bnbias
-```
 
-#### Compute :
+#### Batchnorm computational graph : 
+
+<p align="center">
+  <img src="https://github.com/mel-ugaddan/karpathy-makemore-series/blob/derivation/computational_graph_batchnorm.jpg?raw=true" alt="Micrograd Example">
+</p>
+
+
+#### Backpropagate, then compute :
 
 $$
-\frac{dL}{dx_i} = ?
+\frac{dL}{dx_i},\frac{dL}{d\sigma^2},\frac{dL}{d\mu}
 $$
 
-#### The chain rule of computing $$\frac{dL}{dx_i}$$ for batchnorm is :
+#### For node <span style="background-color:#c8facc;">(1)</span>, for each element $i$ from vector $\hat{x}$ we have the following  :
 
 $$
 \begin{aligned}
-\frac{dL}{d\hat{x}_i}&=\frac{dL}{dy_i}
+\frac{dL}{d\hat{x}_i}&=\frac{dL}{dy_i}\cdot\gamma
 \end{aligned}
 $$
 
+#### Moving on node <span style="background-color:#c8facc;">(2)</span>, we have $\frac{dL}{d\sigma^2}$ we have the following  :
 
+$$
+\begin{aligned}
+\frac{dL}{d\sigma^2}&=\sum_{i=1}^{m}\frac{dL}{d\hat{x}_i}\cdot\frac{d\hat{x}_i}{d\sigma^2}\\
+&=\gamma\sum_{i=1}^{m}\frac{d}{d\sigma^2}\left[\frac{x_i-\mu}{(\sigma^2+\epsilon)^{\frac{1}{2}}}\right]\cdot\frac{d}{dy_i}\\
+&=-\frac{\gamma}{2} \sum_{i=1}^{m}\frac{d}{dy_i}(x_i-\mu)(\sigma^2+\epsilon)^{-\frac{3}{2}}\\
+\end{aligned}
+$$
 
 ---
 
