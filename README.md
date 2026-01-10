@@ -210,7 +210,11 @@ $$
 \end{aligned}
 $$
 
-Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog.
+Overall, I just follow the same from the video leading to this code :
+
+```
+dhprebn = (bngain*bnvar_inv)/n*(n*dhpreact - dhpreact.sum(0) - n/ (n-1) * bnraw * (dhpreact*bnraw).sum(0))
+```
 
 ---
 
