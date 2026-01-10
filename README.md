@@ -128,7 +128,6 @@ $$
 
 #### Moving on node <span style="background-color:#c8facc;">(3)</span>  :
 
-
 $$
 \begin{aligned}
 \frac{dL}{d\mu}&=\left(\sum_{i=1}^{m}\frac{dL}{d\hat{x}_i}\cdot\frac{d\hat{x}_i}{d\mu}\right)+\left(\frac{dL}{d\sigma^2}\cdot\frac{d\sigma^2}{d\mu}\right)\\
@@ -168,7 +167,50 @@ $$
 \end{aligned}
 $$
 
+#### Last node <span style="background-color:#c8facc;">(4)</span>  :
 
+$$
+\begin{aligned}
+\frac{dL}{dx_i}&=
+\frac{dL}{d\hat{x_i}}\frac{d\hat{x_i}}{dx_i}
++\frac{dL}{d\mu}\frac{d\mu}{dx_i}
++\frac{dL}{d\sigma^2}\frac{d\sigma^2}{dx_i}\\
+\end{aligned}
+$$
+
+#### Solving terms independently  :
+
+$$
+\begin{aligned}
+\frac{d\hat{x_i}}{dx_i}
+&=\frac{d}{dx_i}\left[\frac{x_i-\mu}{\sqrt{\sigma^2+\epsilon}}\right]
+=(\sigma^2+\epsilon)^{-\frac{1}{2}}
+\\
+\frac{d\mu}{dx_i}&=
+\frac{d}{dx_i}\left[\frac{1}{m}\sum_{j=1}^{m}x_j\right]
+=\frac{1}{m}
+\\
+\frac{d\sigma^2}{dx_i}&=
+\frac{d}{dx_i}\left[\frac{1}{m-1}\sum_{j=1}^{m}(x_j-\mu)^2\right]=\frac{2}{m-1}(x_i-\mu)\\
+\end{aligned}
+$$
+
+#### Finally combining everything :
+
+$$
+\begin{aligned}
+\frac{dL}{dx_i}&=
+\frac{dL}{d\hat{x_i}}\frac{d\hat{x_i}}{dx_i}
++\frac{dL}{d\mu}\frac{d\mu}{dx_i}
++\frac{dL}{d\sigma^2}\frac{d\sigma^2}{dx_i}\\
+&=\left(\frac{dL}{dy_i}\cdot\gamma\right)(\sigma^2+\epsilon)^{-\frac{1}{2}}
++\left(-\sum_{j=1}^{m}\frac{dL}{dy_j}\gamma(\sigma^2+\epsilon)^{-\frac{1}{2}}\right)\frac{1}{m}
++\left(-\frac{1}{2}\gamma\sum_{j=1}^{m}\frac{dL}{dy_j}(x_j-\mu)(\sigma^2+\epsilon)^{-\frac{3}{2}}\right)\left(\frac{2}{m-1}(x_i-\mu)\right)\\
+&=\frac{\gamma(\sigma^2+\epsilon)^{-\frac{1}{2}}}{m}\left[m\frac{dL}{dy_i}-\sum_{j=1}^{m}\frac{dL}{dy_j}-\frac{m}{m-1}\hat{x}_i\sum_{j=1}^{m}\hat{x}_j\right]
+\end{aligned}
+$$
+
+Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog.
 
 ---
 
