@@ -126,6 +126,17 @@ $$
 \end{aligned}
 $$
 
+#### Moving on node <span style="background-color:#c8facc;">(3)</span>  :
+
+
+$$
+\begin{aligned}
+\frac{dL}{d\mu}&=\left(\sum_{i=1}^{m}\frac{dL}{d\hat{x}_i}\cdot\frac{d\hat{x}_i}{d\mu}\right)+\left(\frac{dL}{d\sigma^2}\cdot\frac{d\sigma^2}{d\mu}\right)\\
+\end{aligned}
+$$
+
+#### Solving for the right term  :
+
 $$
 \begin{aligned}
 \frac{d\sigma^2}{d\mu}&=\frac{d}{d\mu}\left[\frac{1}{m-1}\sum_{i=1}^{m}(x_i-\mu)^2\right]\\
@@ -136,9 +147,24 @@ $$
 \end{aligned}
 $$
 
+#### Solving for the left term  :
+
+$$
+\begin{aligned} 
+\frac{d\hat{x}}{d\mu}&=\frac{d}{d\mu}\left[\frac{x_i-\mu}{(\sigma^2+\epsilon)^\frac{1}{2}}\right]\\ 
+&=(-1)(\sigma^2+\epsilon)^{-\frac{1}{2}}\\ 
+&=-(\sigma^2+\epsilon)^{-\frac{1}{2}} 
+\end{aligned}
+$$
+
+#### Therefore :
+
 $$
 \begin{aligned}
-\frac{dL}{d\sigma^2}&=\left(\sum_{i=1}^{m}\frac{dL}{d\hat{x}_i}\cdot\frac{d\hat{x}_i}{d\mu}\right)+\left(\frac{dL}{d\sigma^2}\cdot\frac{d\sigma^2}{d\mu}\right)\\
+\frac{dL}{d\mu}&=-\sum_{i=1}^{m}\frac{d}{dy_i}
+\gamma(\sigma^2+\epsilon)^{-\frac{1}{2}} +\left(\frac{dL}{d\sigma^2}\cdot 0 \right)\\
+&=-\sum_{i=1}^{m}\frac{d}{dy_i}
+\gamma(\sigma^2+\epsilon)^{-\frac{1}{2}}\\
 \end{aligned}
 $$
 
