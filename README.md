@@ -82,6 +82,8 @@ draw_dot(loss)
 
 ![Micrograd Example](https://github.com/mel-ugaddan/karpathy-makemore-series/blob/main/micrograd_example.png?raw=true)
 
+### Example output from **Makemore Series**, manual backprogpagation of Batchnorm :
+
 ### Batchnorm Computation :
 
 #### Formula :
@@ -132,7 +134,7 @@ Code :
 dhpreact = (1-h**2)*dh #  (1-h**2) is from TanH
 ```
 
-#### Moving on node <span style="background-color:#c8facc;">(2)</span>, we have $\frac{dL}{d\sigma^2}$ we have the following  :
+#### Moving on node (2), we have $\frac{dL}{d\sigma^2}$ we have the following  :
 
 $$
 \begin{aligned}
@@ -150,7 +152,7 @@ dbndiff = (torch.ones_like(bndiff)*bnvar_inv)* dbnraw
 dbnvar = (-0.5*(bnvar+ 1e-5)**(-3/2)) * dbnvar_inv
 ```
 
-#### Moving on node <span style="background-color:#c8facc;">(3)</span>  :
+#### Moving on node (3) :
 
 $$
 \begin{aligned}
@@ -249,5 +251,5 @@ dhprebn = (bngain*bnvar_inv)/n*(n*dhpreact - dhpreact.sum(0) - n/ (n-1) * bnraw 
 
 ---
 
-Note : This repository is just my notes, it does not represents how I code professionally. I'm putting it here for now as a blog.
+Note : This repository is just collection of my notes, it does not represents how I code professionally. I'm putting it here for now as a blog.
 
