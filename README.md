@@ -1,4 +1,4 @@
-# Neural Networks From Scratch — micrograd & makemore ( Intro to Deep Learning series )
+# Neural Networks From Scratch — micrograd & makemore ( Intro to Deep Learning Series )
 
 This repository contains implementations, notes, and experiments based on **Andrej Karpathy’s “Neural Networks: Zero to Hero” series**, focusing on:
 
@@ -94,6 +94,16 @@ y_i &= \gamma \hat{x}_i + \beta
 \end{aligned}
 $$
 
+#### Code :
+```
+bnmeani = 1/n*hprebn.sum(0, keepdim=True)
+bndiff = hprebn - bnmeani
+bndiff2 = bndiff**2
+bnvar = 1/(n-1)*(bndiff2).sum(0, keepdim=True) # note: Bessel's correction (dividing by n-1, not n)
+bnvar_inv = (bnvar + 1e-5)**-0.5
+bnraw = bndiff * bnvar_inv
+hpreact = bngain * bnraw + bnbias
+```
 
 #### Batchnorm computational graph : 
 
@@ -116,6 +126,12 @@ $$
 \end{aligned}
 $$
 
+Code :
+
+```
+dhpreact = (1-h**2)*dh #  (1-h**2) is from TanH
+```
+
 #### Moving on node <span style="background-color:#c8facc;">(2)</span>, we have $\frac{dL}{d\sigma^2}$ we have the following  :
 
 $$
@@ -125,6 +141,14 @@ $$
 &=-\frac{\gamma}{2} \sum_{i=1}^{m}\frac{d}{dy_i}(x_i-\mu)(\sigma^2+\epsilon)^{-\frac{3}{2}}\\
 \end{aligned}
 $$
+
+Code :
+
+```
+dbnvar_inv = (bndiff * dbnraw).sum(0,keepdims=True)
+dbndiff = (torch.ones_like(bndiff)*bnvar_inv)* dbnraw
+dbnvar = (-0.5*(bnvar+ 1e-5)**(-3/2)) * dbnvar_inv
+```
 
 #### Moving on node <span style="background-color:#c8facc;">(3)</span>  :
 
@@ -166,6 +190,13 @@ $$
 \gamma(\sigma^2+\epsilon)^{-\frac{1}{2}}\\
 \end{aligned}
 $$
+
+Code : 
+```
+dbndiff2 = torch.ones_like(bndiff2) * dbnvar*(1/(n-1))
+dbndiff += 2*(bndiff) * dbndiff2
+dbnmeani = -dbndiff.sum(0,keepdims=True)
+```
 
 #### Last node <span style="background-color:#c8facc;">(4)</span>  :
 
