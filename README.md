@@ -2,10 +2,10 @@
 
 This repository contains implementations, notes, and experiments based on **Andrej Karpathy’s “Neural Networks: Zero to Hero” series**, focusing on:
 
-- **micrograd** — a tiny automatic differentiation engine
-- **makemore** — character-level language models built step by step
+- **micrograd** — A tiny automatic differentiation engine : Basically Pytorch from scratch.
+- **makemore** — A youtube series about concepts on Deep Learning. 
 
-The goal is to deeply understand how pytorch works internally, from backpropagation to language modeling.
+The goal is to deeply understand how pytorch works internally, from backpropagation to language modeling like GPT or BERT.
 
 ---
 
